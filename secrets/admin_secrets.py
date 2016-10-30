@@ -3,5 +3,6 @@
 #
 admin_user="adminUser" 
 admin_pw="adminPass"       
-port="27333"            
+#port="27333"            
+port="27017"
 host="localhost"  
