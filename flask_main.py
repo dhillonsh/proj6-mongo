@@ -76,8 +76,8 @@ def index():
 @app.route("/create")
 def create():
     app.logger.debug("Create")
-    record = { "type": "dated_memo", "date":  arrow.utcnow().naive, "text": "This is a sample memo" }
-    collection.insert(record)
+    #record = { "type": "dated_memo", "date":  arrow.utcnow().naive, "text": "This is a sample memo" }
+    #collection.insert(record)
     return flask.render_template('create.html')
 
 
