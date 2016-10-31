@@ -36,25 +36,17 @@
   {% endif %}
 {% endwith %}
 
-<h1>Memos</h1>
-
-{% if g.memos %}
-    {% for memo in g.memos %}
-  <div class="memo">
-  <div class="row">
-  <div class="col-md-2">
-    {{ memo.date | humanize }}
-  </div>
-  <div class="col-md-10">
-    {{ memo.text }}
-  </div>
-  </div> <!-- row -->
-  </div> <!-- memo -->
-  {% endfor %}
-{% else %}
-  <p>No memos for you. </p>  
-{% endif %}
-
+<h1>Create a memo</h1>
+  <table>
+    <tr>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="2"><textarea></textarea></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="submit" id="save" value="Save" /></td>
+    </tr>
  
 
 </div> <!-- container -->
