@@ -145,7 +145,7 @@ def get_memos():
     """
     records = [ ]
     for record in collection.find( { "type": "dated_memo" } ):
-        record['date'] = arrow.get(record['date']).humanize()
+        record['date'] = humanize_arrow_date(arrow.get(record['date']))
         del record['_id']
         records.append(record)
     return records 
