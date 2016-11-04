@@ -81,8 +81,8 @@ def create():
       return flask.redirect(flask.url_for('index'))
     return flask.render_template('create.html')
 
-@app.route("/deleteselected", methods=["POST"])
-def deleteselected():
+@app.route("/deletememo", methods=["POST"])
+def deletememo():
     app.logger.debug("Delete Selected")
     if request.method == 'POST':
       print(request.form.get('delete'))
