@@ -120,8 +120,8 @@ def humanize_arrow_date( date ):
     need to catch 'today' as a special case. 
     """
     try:
-        then = arrow.get(date).to('local').format('YYYY-MM-DD')
-        now = arrow.utcnow().to('local').format('YYYY-MM-DD')
+        then = arrow.get(arrow.get(date).to('local').format('YYYY-MM-DD'))
+        now = arrow.get(arrow.utcnow().to('local').format('YYYY-MM-DD'))
         print(then.isoformat())
         print(now.isoformat())
         if then.date() == now.date():
