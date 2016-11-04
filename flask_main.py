@@ -85,6 +85,7 @@ def create():
 def deletememo():
     app.logger.debug("Delete Selected")
     if request.method == 'POST':
+      print(request.data)
       print(request.form.getlist('delete'))
       return flask.redirect(flask.url_for('index'))
     return flask.redirect(flask.url_for('index'))
