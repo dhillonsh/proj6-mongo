@@ -121,7 +121,7 @@ def humanize_arrow_date( date ):
     """
     try:
         then = arrow.get(date).to('local')
-        now = arrow.utcnow().to('local')
+        now = arrow.utcnow().to('local').replace(hour=0, minute=0, second=0)
         print(then.isoformat())
         print(now.isoformat())
         if then.date() == now.date():
