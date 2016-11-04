@@ -86,7 +86,7 @@ def deletememo():
     app.logger.debug("Delete Selected")
     if request.method == 'POST':
       for id in request.form.getlist('delete[]'):
-         collection.remove(id)
+         collection.remove({'_id': ObjectId(id)})
       return flask.redirect(flask.url_for('index'))
     return flask.redirect(flask.url_for('index'))
    
