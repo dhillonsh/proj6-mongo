@@ -81,12 +81,12 @@ def create():
       return flask.redirect(flask.url_for('index'))
     return flask.render_template('create.html')
 
-@app.route("/deletememo", methods=["POST"])
+@app.route("/deletememo", methods=["GET, POST"])
 def deletememo():
     app.logger.debug("Delete Selected")
     if request.method == 'POST':
       print(request.data)
-      print(request.form.getlist('delete'))
+      print(request.form.getlist('delete[]'))
       return flask.redirect(flask.url_for('index'))
     return flask.redirect(flask.url_for('index'))
    
