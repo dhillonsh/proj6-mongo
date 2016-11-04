@@ -72,8 +72,8 @@ def index():
   return flask.render_template('index.html')
 
 
-@app.route("/new", methods=["POST"])
-@app.route("/create", methods=["POST"])
+@app.route("/new", methods=["GET", "POST"])
+@app.route("/create", methods=["GET", "POST"])
 def create():
     app.logger.debug("Create")
     if request.method == 'POST':
