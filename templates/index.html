@@ -38,14 +38,14 @@
 
 <h1>Memos</h1>
   <a href="/create">Create a Memo</a>
-  <form action="deletememo" method="post">
-  <input type="submit" id="deleteSelected" value="Delete Selected" />
+  <form action="/deletememo" method="post">
+  
 {% if g.memos %}
     {% for memo in g.memos %}
   <div class="memo">
   <div class="row">
     <div class="col-md-2">
-    <input type="checkbox" name="delete[]" value="{{ memo._id }}" />
+    <input type="checkbox" id="delete[]" name="delete[]" value="{{ memo._id }}" />
   </div>
   <div class="col-md-2">
     {{ memo.date}}
@@ -59,6 +59,7 @@
 {% else %}
   <p>No memos for you. </p>  
 {% endif %}
+    <input type="submit" id="deleteSelected" value="Delete Selected" />
   </form>
  
 
