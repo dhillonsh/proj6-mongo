@@ -1,6 +1,5 @@
 from bson.objectid import ObjectId
 
-@app.template_filter( 'humanize' )
 def humanize_arrow_date( date ):
     """
     Date is internal UTC ISO format string.
