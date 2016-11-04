@@ -77,26 +77,11 @@ def index():
 def create():
     app.logger.debug("Create")
     if request.method == 'POST':
-      print("In Create --- " + arrow.get(request.form.get('begin_date')).naive.isoformat())
       record = { "type": "dated_memo", "date":  arrow.get(request.form.get('begin_date')).naive.isoformat(), "text": request.form.get('memo') }
       collection.insert(record)
       return flask.redirect(flask.url_for('index'))
 
     return flask.render_template('create.html')
-
-'''
-@app.route("/addmemo", methods=["POST"])
-def addmemo():
-    app.logger.debug("Create")
-      #request.args.get('begin_date')
-    print(request.args.get('begin_date'))
-    print(request.args.get('memo'))
-      #arrow.utcnow().naive
-    record = { "type": "dated_memo", "date":  request.args.get('begin_date'), "text": request.args.get('memo') }
-    collection.insert(record)
-    return flask.redirect(flask.url_for('index'))
-   #return flask.render_template('index.html')
-'''
 
 @app.errorhandler(404)
 def page_not_found(error):
@@ -123,10 +108,6 @@ def humanize_arrow_date( date ):
     try:
         then = arrow.get(arrow.get(date).format('YYYY-MM-DD'))
         now = arrow.get(arrow.utcnow().to('local').format('YYYY-MM-DD'))
-        print(then.isoformat())
-        print(arrow.get(date).to('local'))
-        print(now.isoformat())
-        print(arrow.utcnow().to('local'))
         if then.date() == now.date():
             human = "Today"
         else: 
@@ -150,7 +131,7 @@ def get_memos():
     """
     records = [ ]
     for record in collection.find( { "type": "dated_memo" } ):
-        record['date'] = arrow.get(record['date']).humanize()
+        record['date'] = humanize_arrow_date(arrow.get(record['date']))
         del record['_id']
         records.append(record)
     return records 
