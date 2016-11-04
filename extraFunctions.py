@@ -26,7 +26,7 @@ def humanize_arrow_date( date ):
 # Functions available to the page code above
 #
 ##############
-def get_memos():
+def get_memos(collection):
     """
     Returns all memos in the database, in a form that
     can be inserted directly in the 'session' object.
@@ -38,9 +38,9 @@ def get_memos():
         records.append(record)
     return records 
 
-def add_memo(date, memo):
+def add_memo(collection, date, memo):
     record = { "type": "dated_memo", "date":  arrow.get(date).naive.isoformat(), "text": memo }
     collection.insert(record)
 
-def delete_memo(_id):
+def delete_memo(collection, _id):
     collection.remove({'_id': ObjectId(_id)})
