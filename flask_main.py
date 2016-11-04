@@ -77,7 +77,7 @@ def index():
 def create():
     app.logger.debug("Create")
     if request.method == 'POST':
-      print("In Create --- " + arrow.get(request.form.get('begin_date')).naive)
+      print("In Create --- " + arrow.get(request.form.get('begin_date')).naive.isoformat())
       record = { "type": "dated_memo", "date":  request.form.get('begin_date'), "text": request.form.get('memo') }
       collection.insert(record)
       return flask.redirect(flask.url_for('index'))
