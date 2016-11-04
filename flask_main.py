@@ -88,8 +88,7 @@ def deletememo():
     app.logger.debug("Delete Selected")
     if request.method == 'POST':
       for id in request.form.getlist('delete[]'):
-         collection.remove({'_id': ObjectId(id)})
-      return flask.redirect(flask.url_for('index'))
+         delete_memo(id)
     return flask.redirect(flask.url_for('index'))
    
 @app.errorhandler(404)
@@ -149,6 +148,9 @@ def add_memo(date, memo):
     record = { "type": "dated_memo", "date":  arrow.get(date).naive.isoformat(), "text": memo }
     collection.insert(record)
 
+def delete_memo(_id):
+    collection.remove({'_id': ObjectId(_id)})
+      
 if __name__ == "__main__":
     app.debug=CONFIG.DEBUG
     app.logger.setLevel(logging.DEBUG)
