@@ -123,7 +123,9 @@ def humanize_arrow_date( date ):
         then = arrow.get(arrow.get(date).to('local').format('YYYY-MM-DD'))
         now = arrow.get(arrow.utcnow().to('local').format('YYYY-MM-DD'))
         print(then.isoformat())
+        print(arrow.get(date).to('local'))
         print(now.isoformat())
+        print(arrow.utcnow().to('local'))
         if then.date() == now.date():
             human = "Today"
         else: 
