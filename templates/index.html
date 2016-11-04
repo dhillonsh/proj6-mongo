@@ -38,6 +38,8 @@
 
 <h1>Memos</h1>
   <a href="/create">Create a Memo</a>
+  <form action="deletememo" method="post">
+  <button id="deleteSelected">Delete Selected</button>
 {% if g.memos %}
     {% for memo in g.memos %}
   <div class="memo">
@@ -57,7 +59,7 @@
 {% else %}
   <p>No memos for you. </p>  
 {% endif %}
-
+  </form>
  
 
 </div> <!-- container -->
