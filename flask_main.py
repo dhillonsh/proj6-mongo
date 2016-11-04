@@ -72,14 +72,20 @@ def index():
   return flask.render_template('index.html')
 
 
-@app.route("/new")
-@app.route("/create")
+@app.route("/new", methods=["POST"])
+@app.route("/create", methods=["POST"])
 def create():
     app.logger.debug("Create")
-    #record = { "type": "dated_memo", "date":  arrow.utcnow().naive, "text": "This is a sample memo" }
-    #collection.insert(record)
+    if request.method == 'POST':
+      print(request.args.get('begin_date'))
+      print(request.args.get('memo'))
+      record = { "type": "dated_memo", "date":  request.args.get('begin_date'), "text": request.args.get('memo') }
+      collection.insert(record)
+      return flask.redirect(flask.url_for('index'))
+
     return flask.render_template('create.html')
 
+'''
 @app.route("/addmemo", methods=["POST"])
 def addmemo():
     app.logger.debug("Create")
@@ -91,6 +97,7 @@ def addmemo():
     collection.insert(record)
     return flask.redirect(flask.url_for('index'))
    #return flask.render_template('index.html')
+'''
 
 @app.errorhandler(404)
 def page_not_found(error):
