@@ -77,8 +77,7 @@ def index():
 def create():
     app.logger.debug("Create")
     if request.method == 'POST':
-      record = { "type": "dated_memo", "date":  arrow.get(request.form.get('begin_date')).naive.isoformat(), "text": request.form.get('memo') }
-      collection.insert(record)
+      add_record(request.form.get('begin_date'), request.form.get('memo'))
       return flask.redirect(flask.url_for('index'))
 
     return flask.render_template('create.html')
@@ -131,12 +130,14 @@ def get_memos():
     """
     records = [ ]
     for record in collection.find( { "type": "dated_memo" } ):
-        print(record)
         record['date'] = humanize_arrow_date(arrow.get(record['date']))
-        del record['_id']
+        #del record['_id']
         records.append(record)
     return records 
 
+def add_memo(date, memo):
+    record = { "type": "dated_memo", "date":  arrow.get(date).naive.isoformat(), "text": memo }
+    collection.insert(record)
 
 if __name__ == "__main__":
     app.debug=CONFIG.DEBUG
