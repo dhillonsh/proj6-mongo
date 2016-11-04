@@ -81,7 +81,7 @@ def create():
     return flask.render_template('create.html')
 
 @app.route("/addmemo")
-def create():
+def addmemo():
     app.logger.debug("Create")
       #request.args.get('begin_date')
     record = { "type": "dated_memo", "date":  arrow.utcnow().naive, "text": request.args.get('memo') }
