@@ -86,7 +86,8 @@ def addmemo():
       #request.args.get('begin_date')
     print(request.args.get('begin_date'))
     print(request.args.get('memo'))
-    record = { "type": "dated_memo", "date":  arrow.utcnow().naive, "text": request.args.get('memo') }
+      #arrow.utcnow().naive
+    record = { "type": "dated_memo", "date":  request.args.get('begin_date'), "text": request.args.get('memo') }
     collection.insert(record)
     return flask.redirect(flask.url_for('index'))
    #return flask.render_template('index.html')
