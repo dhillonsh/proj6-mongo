@@ -82,7 +82,7 @@ def create():
 
 @app.route("/addmemo")
 def create():
-    app.logger.debug("Create")request.args.get('km', 0, type=int)
+    app.logger.debug("Create")
       #request.args.get('begin_date')
     record = { "type": "dated_memo", "date":  arrow.utcnow().naive, "text": request.args.get('memo') }
     collection.insert(record)
