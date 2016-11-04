@@ -68,7 +68,7 @@ except:
 @app.route("/index")
 def index():
   app.logger.debug("Main page entry")
-  g.memos = get_memos()
+  g.memos = get_memos(collection)
   for memo in g.memos: 
       app.logger.debug("Memo: " + str(memo))
   return flask.render_template('index.html')
@@ -79,7 +79,7 @@ def index():
 def create():
     app.logger.debug("Create")
     if request.method == 'POST':
-      add_memo(request.form.get('begin_date'), request.form.get('memo'))
+      add_memo(collection, request.form.get('begin_date'), request.form.get('memo'))
       return flask.redirect(flask.url_for('index'))
     return flask.render_template('create.html')
 
@@ -88,7 +88,7 @@ def deletememo():
     app.logger.debug("Delete Selected")
     if request.method == 'POST':
       for id in request.form.getlist('delete[]'):
-         delete_memo(id)
+         delete_memo(collection, id)
     return flask.redirect(flask.url_for('index'))
    
 @app.errorhandler(404)
