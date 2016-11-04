@@ -38,8 +38,8 @@
 
 <h1>Memos</h1>
   <a href="/create">Create a Memo</a>
+  <input type="submit" id="deleteSelected" value="Delete Selected" />
   <form action="/deletememo" method="post">
-  <input name="tesst" value="tt" />
 {% if g.memos %}
     {% for memo in g.memos %}
   <div class="memo">
@@ -59,7 +59,6 @@
 {% else %}
   <p>No memos for you. </p>  
 {% endif %}
-    <input type="submit" id="deleteSelected" value="Delete Selected" />
   </form>
  
 
