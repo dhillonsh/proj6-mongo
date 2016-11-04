@@ -84,11 +84,11 @@ def create():
 def addmemo():
     app.logger.debug("Create")
       #request.args.get('begin_date')
-    print(request.args)
+    print(request.args.get('begin_date'))
     print(request.args.get('memo'))
     record = { "type": "dated_memo", "date":  arrow.utcnow().naive, "text": request.args.get('memo') }
     collection.insert(record)
-    return flask.redirect(flask.url_for('/'))
+    return flask.redirect(flask.url_for('index'))
    #return flask.render_template('index.html')
 
 @app.errorhandler(404)
