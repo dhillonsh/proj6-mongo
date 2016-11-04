@@ -80,7 +80,7 @@ def create():
     #collection.insert(record)
     return flask.render_template('create.html')
 
-@app.route("/addmemo")
+@app.route("/addmemo", methods=["POST"])
 def addmemo():
     app.logger.debug("Create")
       #request.args.get('begin_date')
