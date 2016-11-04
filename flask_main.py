@@ -79,9 +79,15 @@ def create():
     if request.method == 'POST':
       add_memo(request.form.get('begin_date'), request.form.get('memo'))
       return flask.redirect(flask.url_for('index'))
-
     return flask.render_template('create.html')
 
+@app.route("/deleteselected", methods=["POST"])
+def create():
+    app.logger.debug("Delete Selected")
+    if request.method == 'POST':
+      print(request.form.get('delete'))
+      return flask.redirect(flask.url_for('index'))
+    return flask.redirect(flask.url_for('index'))
 @app.errorhandler(404)
 def page_not_found(error):
     app.logger.debug("Page not found")
