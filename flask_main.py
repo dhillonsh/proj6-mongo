@@ -86,6 +86,7 @@ def addmemo():
       #request.args.get('begin_date')
     record = { "type": "dated_memo", "date":  arrow.utcnow().naive, "text": request.args.get('memo') }
     collection.insert(record)
+    return flask.render_template('index.html')
 
 @app.errorhandler(404)
 def page_not_found(error):
