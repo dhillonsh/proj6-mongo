@@ -38,9 +38,9 @@
 
 <h1>Memos</h1>
   <a href="/create">Create a Memo</a>
-  <input type="submit" id="deleteSelected" value="Delete Selected" />
   <form action="/deletememo" method="post">
-{% if g.memos %}
+<input type="submit" id="deleteSelected" value="Delete Selected" />
+    {% if g.memos %}
     {% for memo in g.memos %}
   <div class="memo">
   <div class="row">
