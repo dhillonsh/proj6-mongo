@@ -77,7 +77,7 @@ def index():
 def create():
     app.logger.debug("Create")
     if request.method == 'POST':
-      add_record(request.form.get('begin_date'), request.form.get('memo'))
+      add_memo(request.form.get('begin_date'), request.form.get('memo'))
       return flask.redirect(flask.url_for('index'))
 
     return flask.render_template('create.html')
