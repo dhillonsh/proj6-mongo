@@ -25,4 +25,4 @@
 * The default port is 5000, so the webserver should be reachable at http://localhost:5000 , and also through its IP address.
  
 ### Testing the Application ###
- * There are no tests for this application other than accessing the webpage at http://localhost:5000 and seeing the map display.
+ * There are nosetests for various situations, including dates for: yesterday, today, and tomorrow.
