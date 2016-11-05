@@ -52,7 +52,14 @@ def test_addandremove1():
     add_memo(collection, arrow.utcnow().to('local'), 'memo msg here')
     memo_list = get_memos(collection)
     assert len(memo_list) == 1
-    assert memo_list[0].get('date') == 'Today'
+    assert memo_list[0].get('date').lower() == 'today'
     assert memo_list[0].get('text') == 'memo msg here'
     delete_memo(collection, memo_list[0].get('_id'))
     assert len(get_memos(collection)) == 0
+    
+def test_yesterday
+    add_memo(collection, arrow.utcnow().to('local').replace(days=-1), 'new memo')
+    memo_list = get_memos(collection)
+    assert len(memo_list) == 1
+    assert memo_list[0].get('date').lower() == 'yesterday'
+    delete_memo(collection, memo_list[0].get('_id'))
