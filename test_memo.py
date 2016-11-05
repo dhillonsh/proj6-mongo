@@ -10,6 +10,11 @@ MONGO_CLIENT_URL = "mongodb://{}:{}@localhost:{}/{}".format(
     secrets.client_secrets.db_user_pw,
     secrets.admin_secrets.port, 
     'test_db')
+MONGO_ADMIN_URL = "mongodb://{}:{}@{}:{}/admin".format(
+    secrets.admin_secrets.admin_user,
+    secrets.admin_secrets.admin_pw,
+    secrets.admin_secrets.host, 
+    secrets.admin_secrets.port)
 
 try: 
     dbclient = MongoClient(MONGO_ADMIN_URL)
