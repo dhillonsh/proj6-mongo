@@ -4,6 +4,12 @@ from extraFunctions import *
 import arrow
 
 import secrets.client_secrets
+MONGO_CLIENT_URL = "mongodb://{}:{}@localhost:{}/{}".format(
+    secrets.client_secrets.db_user,
+    secrets.client_secrets.db_user_pw,
+    secrets.admin_secrets.port, 
+    'test_db')
+
 try: 
     dbclient = MongoClient(MONGO_ADMIN_URL)
     db = getattr(dbclient, 'test_db')
