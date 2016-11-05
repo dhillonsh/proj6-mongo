@@ -33,6 +33,7 @@ except Exception as err:
 try: 
     dbclient = MongoClient(MONGO_ADMIN_URL)
     db = getattr(dbclient, 'test_db')
+    collection = db.dated
     print("Got database {}".format('test_db'))
     print("Attempting to create user")
     db.add_user(secrets.client_secrets.db_user,
