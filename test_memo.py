@@ -23,7 +23,7 @@ try:
     print("Attempting drop users")
     # db.command( {"dropAllUsersFromDatabase": 1 } )
     db.remove_user(secrets.client_secrets.db_user)
-    print("Dropped database users for {}".format(secrets.client_secrets.db))
+    print("Dropped database users for {}".format('test_db')
     db.command( {"dropDatabase": 1 } )
     print("Dropped database {}".format(secrets.client_secrets.db))
 except Exception as err:
@@ -40,9 +40,9 @@ except:
     sys.exit(1)
     
 def test_standard200():
-    '''add_memo(collection, '2016-11-04', 'test')
+    add_memo(collection, '2016-11-04', 'test')
     
     test_memos = get_memos(collection)
     for memo in test_memos: 
         print("Memo: " + str(memo))
-'''
+
