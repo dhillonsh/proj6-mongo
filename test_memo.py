@@ -51,8 +51,10 @@ def test_standard200():
     
     add_memo(collection, arrow.utcnow().to('local'), 'memo msg here')
     assert len(get_memos) == 1
-    print(get_memos(collection))
-    for get_memos(collection) in test_memos: 
+    memo_list = get_memos(collection)
+    print(memo_list)
+    print(memo_list[0])
+    for memo in memo_list: 
         print("Memo: " + str(memo))
 
     assert not get_memos(collection)
