@@ -1,3 +1,4 @@
+import pymongo
 from pymongo import MongoClient
 import sys
 from extraFunctions import *
@@ -18,14 +19,14 @@ MONGO_ADMIN_URL = "mongodb://{}:{}@{}:{}/admin".format(
 
 try: 
     dbclient = MongoClient(MONGO_ADMIN_URL)
-    db = getattr(dbclient, 'test_db')
+    removeDB = getattr(dbclient, 'test_db')
     print("Got database")
     print("Attempting drop users")
     # db.command( {"dropAllUsersFromDatabase": 1 } )
-    db.remove_user(secrets.client_secrets.db_user)
+    removeDB.remove_user(secrets.client_secrets.db_user)
     print("Dropped database users for {}".format('test_db')
-    db.command( {"dropDatabase": 1 } )
-    print("Dropped database {}".format(secrets.client_secrets.db))
+    removeDB.command( {"dropDatabase": 1 } )
+    print("Dropped database {}".format('test_db'))
 except Exception as err:
     print("Failed")
     print(err)
