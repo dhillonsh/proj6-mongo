@@ -47,6 +47,7 @@ except Exception as err:
     sys.exit(1)
 
 def test_standard200():
+    print(get_memos(collection))
     assert get_memos(collection) == None
     
     add_memo(collection, arrow.utcnow().to('local'), 'memo msg here')
