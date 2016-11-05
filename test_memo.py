@@ -72,3 +72,12 @@ def test_tomorrow():
     assert memo_list[0].get('date').lower() == 'yesterday'
     assert memo_list[0].get('text') == 'new memo'
     delete_memo(collection, memo_list[0].get('_id'))
+    
+def test_addmultiple():
+    add_memo(collection, arrow.utcnow().to('local').replace(days=-1), 'new memo')
+    memo0 = memo_list[0].get('_id')
+    add_memo(collection, arrow.utcnow().to('local').replace(days=-1), 'new memo')
+    assert len(memo_list) == 2
+    delete_memo(collection, memo_list[0].get('_id'))
+    assert len(memo_list) == 1
+    assert memo0 == get_memos(collection)[0].get('_id')
