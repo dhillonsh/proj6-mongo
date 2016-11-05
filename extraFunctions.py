@@ -18,6 +18,8 @@ def humanize_arrow_date( date ):
             human = then.humanize(now)
             if human == "in a day":
                 human = "Tomorrow"
+            elif human == "a day ago":
+                human = "Yesterday"
     except: 
         human = date
     return human
