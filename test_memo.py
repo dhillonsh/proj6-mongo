@@ -78,7 +78,7 @@ def test_addmultiple():
     memo0 = get_memos(collection)[0].get('_id')
     add_memo(collection, arrow.utcnow().to('local').replace(days=-1), 'new memo')
 
-    assert len(memo_list) == 2
+    assert len(get_memos(collection)) == 2
     delete_memo(collection, get_memos(collection)[1].get('_id'))
-    assert len(memo_list) == 1
+    assert len(get_memos(collection)) == 1
     assert memo0 == get_memos(collection)[0].get('_id')
