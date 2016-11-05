@@ -16,13 +16,12 @@ MONGO_ADMIN_URL = "mongodb://{}:{}@{}:{}/admin".format(
     secrets.admin_secrets.admin_pw,
     secrets.admin_secrets.host, 
     secrets.admin_secrets.port)
-
+'''
 try: 
     dbclient = MongoClient(MONGO_ADMIN_URL)
     removeDB = getattr(dbclient, 'test_db')
     print("Got database")
     print("Attempting drop users")
-    # db.command( {"dropAllUsersFromDatabase": 1 } )
     removeDB.remove_user(secrets.client_secrets.db_user)
     print("Dropped database users for {}".format('test_db'))
     removeDB.command( {"dropDatabase": 1 } )
@@ -30,7 +29,7 @@ try:
 except Exception as err:
     print("Failed")
     print(err)
-    
+    '''
 try: 
     dbclient = MongoClient(MONGO_CLIENT_URL)
     db = getattr(dbclient, 'test_db')
@@ -41,7 +40,7 @@ except:
     sys.exit(1)
     
 def test_standard200():
-    add_memo(collection, '2016-11-04', 'test')
+   # add_memo(collection, '2016-11-04', 'test')
     
     test_memos = get_memos(collection)
     for memo in test_memos: 
