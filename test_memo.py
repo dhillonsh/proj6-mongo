@@ -24,7 +24,7 @@ try:
     print("Attempting drop users")
     # db.command( {"dropAllUsersFromDatabase": 1 } )
     removeDB.remove_user(secrets.client_secrets.db_user)
-    print("Dropped database users for {}".format('test_db')
+    print("Dropped database users for {}".format('test_db'))
     removeDB.command( {"dropDatabase": 1 } )
     print("Dropped database {}".format('test_db'))
 except Exception as err:
