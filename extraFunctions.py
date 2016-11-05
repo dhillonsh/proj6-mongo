@@ -41,7 +41,7 @@ def get_memos(collection):
     return records 
 
 def add_memo(collection, date, memo):
-    record = { "type": "dated_memo", "date":  arrow.get(date).naive.isoformat(), "text": memo }
+    record = { "type": "dated_test_db", "date":  arrow.get(date).naive.isoformat(), "text": memo }
     collection.insert(record)
 
 def delete_memo(collection, _id):
