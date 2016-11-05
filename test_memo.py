@@ -82,3 +82,16 @@ def test_addmultiple():
     delete_memo(collection, get_memos(collection)[1].get('_id'))
     assert len(get_memos(collection)) == 1
     assert memo0 == get_memos(collection)[0].get('_id')
+    
+def test_addrandom():
+    add_memo(collection, arrow.utcnow().to('local').replace(days=+2), 'new memo')
+    memo_list = get_memos(collection)
+    assert len(memo_list) == 1
+    assert memo_list[0].get('date').lower() == 'in 2 days'
+    delete_memo(collection, memo_list[0].get('_id'))
+    
+    add_memo(collection, arrow.utcnow().to('local').replace(months=-3), 'new memo')
+    memo_list = get_memos(collection)
+    assert len(memo_list) == 1
+    assert memo_list[0].get('date').lower() == '3 months ago'
+    delete_memo(collection, memo_list[0].get('_id'))
