@@ -3,6 +3,7 @@ import sys
 from extraFunctions import *
 import arrow
 
+import secrets.client_secrets
 try: 
     dbclient = MongoClient(MONGO_ADMIN_URL)
     db = getattr(dbclient, 'test_db')
