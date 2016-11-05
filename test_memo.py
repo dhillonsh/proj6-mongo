@@ -47,14 +47,14 @@ except Exception as err:
     sys.exit(1)
 
 def test_standard200():
-    assert not get_memos(collection)
+    assert len(get_memos(collection)) == 0
     
     add_memo(collection, arrow.utcnow().to('local'), 'memo msg here')
     memo_list = get_memos(collection)
     assert len(memo_list) == 1
     
     print(memo_list)
-    print(memo_list[0])
+    print(memo_list[0].get('date'))
     for memo in memo_list: 
         print("Memo: " + str(memo))
 
