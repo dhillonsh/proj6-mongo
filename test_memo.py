@@ -4,6 +4,7 @@ from extraFunctions import *
 import arrow
 
 import secrets.client_secrets
+import secrets.admin_secrets
 MONGO_CLIENT_URL = "mongodb://{}:{}@localhost:{}/{}".format(
     secrets.client_secrets.db_user,
     secrets.client_secrets.db_user_pw,
