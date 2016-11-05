@@ -19,7 +19,7 @@
   should work "out of the box" with this command sequence:
   * `git clone <yourGitRepository> <targetDirectory>`
   * `cd <targetDirectory>`
-  * `make configure`
+  * `./configure`
   * `make run`
   * (control-C to stop program)
 * The default port is 5000, so the webserver should be reachable at http://localhost:5000 , and also through its IP address.
