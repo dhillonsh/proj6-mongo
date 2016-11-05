@@ -54,7 +54,7 @@ except:
     sys.exit(1)
    ''' 
 def test_standard200():
-   # add_memo(collection, '2016-11-04', 'test')
+    add_memo(collection, '2016-11-04', 'test')
     
     test_memos = get_memos(collection)
     for memo in test_memos: 
